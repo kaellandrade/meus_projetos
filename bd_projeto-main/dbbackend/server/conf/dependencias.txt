@@ -1,0 +1,10 @@
+DEPENDÊNCIAS INSTALADAS:
+
+express
+nodemon 
+pm2 
+pg-promise
+body-parse
+axios (Aqui usei para teste - será necessário apenas no frontend)
+cors
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comment version="3.0">
+  <caption>Basic RGB</caption>
+  <note>Home movie background with popcorn</note>
+  <place/>
+  <categories>
+    <category value="film"/>
+    <category value="watch"/>
+    <category value="television"/>
+    <category value="technology"/>
+    <category value="woman"/>
+    <category value="motion picture"/>
+    <category value="home"/>
+    <category value="video"/>
+    <category value="broadcasting"/>
+    <category value="media"/>
+    <category value="cinema"/>
+    <category value="room"/>
+    <category value="entertainment"/>
+    <category value="cartoon"/>
+    <category value="concept"/>
+    <category value="display"/>
+    <category value="digital"/>
+    <category value="sofa"/>
+    <category value="stay home"/>
+    <category value="online"/>
+  </categories>
+</comment>

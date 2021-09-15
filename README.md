@@ -1,2 +1,2 @@
-# meus_projetos
-Aqui estão alguns dos meus projetos.
+# Projetos pessoais
+Aqui estão alguns dos meus projetos pessoais.
