@@ -1,4 +1,4 @@
-import { ADD_FRIEND, DELETE_FRIEND, SORTEAR, UPDATE_FRIEND } from './actionsTypes';
+import { ADD_FRIEND, DELETE_FRIEND, SORTEAR, UPDATE_FRIEND, DELETE_ALL, TOGGLE_SCREEN_SORTED} from './actionsTypes';
 /**
  * Ações relacionadas a tela amigo secreto.
  */
@@ -15,6 +15,11 @@ const deleteFriend = friendId => {
         payload: friendId
     }
 }
+const deleteAllFriends = _ => {
+    return {
+        type: DELETE_ALL
+    }
+}
 
 const updateFriend = friendId => {
     return {
@@ -29,4 +34,10 @@ const sortear = value => {
     }
 }
 
-export { addFriend, deleteFriend, updateFriend, sortear }
+const toggle_sortear = _ => {
+    return {
+        type: TOGGLE_SCREEN_SORTED,
+    }
+}
+
+export { addFriend, deleteFriend, updateFriend, sortear, deleteAllFriends, toggle_sortear }

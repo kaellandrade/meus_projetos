@@ -1,4 +1,4 @@
-import { ADD_FRIEND, DELETE_FRIEND, SORTEAR, UPDATE_FRIEND } from "../actions/actionsTypes";
+import { ADD_FRIEND, DELETE_ALL, DELETE_FRIEND, SORTEAR, UPDATE_FRIEND, TOGGLE_SCREEN_SORTED } from "../actions/actionsTypes";
 import { sortear } from '../../util/randomFriends'
 const initialState = {
     amigosCadastrados: [
@@ -39,10 +39,21 @@ reducer = (state = initialState, action) => {
             })
         }
     } else if (action.type === SORTEAR) {
+        console.log('sorteando....')
         return {
             ...state,
-            telaSorteando: action.payload,
             sorteio: sortear(state.amigosCadastrados)
+
+        }
+    } else if (action.type === DELETE_ALL) {
+        return {
+            ...state,
+            amigosCadastrados: []
+        }
+    } else if (action.type === TOGGLE_SCREEN_SORTED) {
+        return {
+            ...state,
+            telaSorteando: !state.telaSorteando
         }
     }
     else {

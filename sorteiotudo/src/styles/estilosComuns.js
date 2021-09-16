@@ -1,5 +1,5 @@
 const ESTILOS_COMUNS = {
-    fontSize:{
+    fontSize: {
         title: 30,
         subTitle: 15
     },
@@ -26,6 +26,19 @@ const ESTILOS_COMUNS = {
         pequeno: 10,
         medio: 20,
         grande: 30
+    },
+    sobraBtns: {
+        shadowColor: "#000",
+
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+
+        elevation: 4,
     }
+
 }
 export { ESTILOS_COMUNS }
