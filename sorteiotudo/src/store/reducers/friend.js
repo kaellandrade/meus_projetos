@@ -19,14 +19,18 @@ reducer = (state = initialState, action) => {
             id: Math.random(),
             ...action.payload
         }
-        return {
+        return {    
             ...state,
-            amigosCadastrados: state.amigosCadastrados.concat(newFrind)
+            amigosCadastrados: state.amigosCadastrados.concat(newFrind),
+            sorteio: []
+
         }
     } else if (action.type === DELETE_FRIEND) {
         return {
             ...state,
-            amigosCadastrados: state.amigosCadastrados.filter(({ id }) => (id != action.payload))
+            amigosCadastrados: state.amigosCadastrados.filter(({ id }) => (id != action.payload)),
+            sorteio: []
+
         }
     } else if (action.type === UPDATE_FRIEND) {
         return {
@@ -36,10 +40,10 @@ reducer = (state = initialState, action) => {
                     return { ...friend, name: action.payload.name, email: action.payload.email }
                 else
                     return friend
-            })
+            }),
+            sorteio: []
         }
     } else if (action.type === SORTEAR) {
-        console.log('sorteando....')
         return {
             ...state,
             sorteio: sortear(state.amigosCadastrados)
@@ -48,7 +52,8 @@ reducer = (state = initialState, action) => {
     } else if (action.type === DELETE_ALL) {
         return {
             ...state,
-            amigosCadastrados: []
+            amigosCadastrados: [],
+            sorteio: []
         }
     } else if (action.type === TOGGLE_SCREEN_SORTED) {
         return {

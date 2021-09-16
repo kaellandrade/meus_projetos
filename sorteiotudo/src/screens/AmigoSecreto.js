@@ -16,6 +16,7 @@ import TutorialAdd from '../components/TutorialAdd';
 import { VAZIO, NUMERO_MINIMO_AMIGOS, UM_SEGUNDO_MS } from '../util/constantes';
 import { Vibration } from 'react-native';
 import { SorteioSpinner } from '../components/spinnerSorteio';
+import If from '../components/If';
 
 
 /**
@@ -48,32 +49,14 @@ const renderFriend = ({ item }, props) => {
     )
 }
 
-const AmigoSecreto = props => {
+const AmigoSecreto = (props) => {
     const amigosCadastrados = props.cadastrados
     return (
         props.telaSorteando ? <SorteioSpinner texto='Sorteando amigos' /> :
 
             <View style={estilos.container}>
                 <ModalFrind />
-                <Header
-                    backgroundColor={ESTILOS_COMUNS.cores.sucesso}
-                    barStyle="default"
-                    placement="center"
-                    leftComponent={
-                        { icon: 'menu', color: '#fff', onPress: _ => console.log('Abrir menu!') }
-                    }
-                    centerComponent={
-                        {
-                            text: 'Amigo Secreto',
-                            style: {
-                                color: '#fff',
-                                fontFamily: ESTILOS_COMUNS.fontPrincipal.light,
-                                fontSize: 20
-                            }
-                        }
-                    }
 
-                />
                 <Painel totalFrinds={amigosCadastrados.length} />
                 <SafeAreaView style={estilos.conteudo}>
                     {
@@ -87,16 +70,16 @@ const AmigoSecreto = props => {
 
                     <TouchableNativeFeedback onPress={_ => {
                         Vibration.vibrate(UM_SEGUNDO_MS * 0.04)
-                        props.openModal(false)
+                        props.openModal(false) // Abri Modal sem ser em modo de Edição
                     }}>
                         <View style={estilos.butonAdd}>
                             <Icon color={ESTILOS_COMUNS.cores.secundaria} name='plus' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
                         </View>
                     </TouchableNativeFeedback>
                 </SafeAreaView>
-                {
-                    amigosCadastrados.length >= NUMERO_MINIMO_AMIGOS ? <BtnOptions /> : null
-                }
+                <If condition={amigosCadastrados.length >= NUMERO_MINIMO_AMIGOS}>
+                    <BtnOptions />
+                </If>
             </View >
     );
 }

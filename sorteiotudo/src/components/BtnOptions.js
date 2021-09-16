@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Text, View, StyleSheet, Dimensions, Vibration, TouchableNativeFeedback } from 'react-native';
+import {StyleSheet, Dimensions, Vibration, TouchableNativeFeedback } from 'react-native';
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
-import Icon from 'react-native-vector-icons/AntDesign';
-import { Fragment } from 'react';
 import { DELAY_SORTED, UM_SEGUNDO_MS } from '../util/constantes';
 import {
     useToast, Box,
@@ -14,11 +12,9 @@ import {
 } from 'native-base';
 import { connect } from 'react-redux'
 import { deleteAllFriends, sortear, toggle_sortear } from '../store/actions/amigoSecreto';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { borderDebug } from '../util/functionsDebugs';
-import { borderRadius } from 'styled-system';
 import MyIconButton from './IconButton';
 import Dialog from './Dialog';
+import If from './If';
 const BtnOptions = props => {
     const { isOpen, onToggle } = useDisclose()
     const toast = useToast();
@@ -76,7 +72,10 @@ const BtnOptions = props => {
                         },
                     }}
                 >
-                    <MyIconButton opacity={0.7} Onpress={_ => { }} name='send' style={estilos.btnEmail} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    <If condition={props.sorteados.length == props.cadastrados.length}>
+                        <MyIconButton opacity={0.7} Onpress={_ => {console.warn('Disparar E-mails')}} name='send' style={estilos.btnEmail} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    </If>
+
                     <MyIconButton opacity={0.7} Onpress={sortearDelay} name='random' style={estilos.btnShuffle} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
                     <MyIconButton opacity={0.7} Onpress={onOpen} name='trash' style={estilos.btnTrash} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
 
