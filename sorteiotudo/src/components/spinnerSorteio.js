@@ -14,12 +14,10 @@ import sorted from '../../assets/img/sorted.png'
 export const SorteioSpinner = props => {
     return (
         <BackgroundImage resizeMode='contain' style={estilos.backGround} source={sorted}>
-            {/* <Center flex={1}> */}
             <HStack space={2}>
                 <Heading color={props.cor || ESTILOS_COMUNS.cores.amizade}>{props.texto}</Heading>
                 <Spinner color={props.cor || ESTILOS_COMUNS.cores.amizade} accessibilityLabel="Loading posts" />
             </HStack>
-            {/* </Center> */}
         </BackgroundImage>
     )
 }

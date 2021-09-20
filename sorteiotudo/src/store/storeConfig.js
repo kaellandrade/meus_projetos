@@ -2,10 +2,12 @@ import { createStore, combineReducers } from 'redux';
 
 import friendReducer from './reducers/friend';
 import modalReducer from './reducers/modal';
+import Reduceconfigs from './reducers/configs';
 
 const reducers = combineReducers({
     friends: friendReducer,
-    modal: modalReducer
+    modal: modalReducer,
+    config: Reduceconfigs 
 })
 
 const storeConfig = _ => {
