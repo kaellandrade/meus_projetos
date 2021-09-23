@@ -1,7 +1,4 @@
-# Projetos pessoais
-Aqui estão alguns dos meus projetos pessoais feito em React/React-Native.
-
-# Aplicativo de Sorteios *(Em desenvolvimento)*
+# Aplicativo Mobile de Sorteios *(Em desenvolvimento)*
 Permite a realização de sorteios de diversos tipos:
 - Amigo secreto
     - Cadastre o *email* e *nome* de todos seus amigos que irá participar do sorteio. Depois é só realizar o sorteio e disparar os emails, cada integrante irá receber seu amigo-secreto via email.
@@ -21,3 +18,8 @@ Permite a realização de sorteios de diversos tipos:
   <img src="./telas/dark.png" width="200" title='Login' />
 </p>
 
+# Tecnologias
+- JavaScript
+- React/Rect-Native
+- Node.js
+- Redux
