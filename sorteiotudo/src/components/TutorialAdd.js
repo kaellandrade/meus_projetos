@@ -5,7 +5,7 @@ import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import { borderDebug } from '../util/functionsDebugs';
 import boxGifit from '../../assets/img/empty.png'
 
-const TutorialAdd = props => {
+const TutorialAdd = _ => {
     return (
         <View style={estilos.container}>
             <ImageBackground resizeMode='contain' style={estilos.backGround} source={boxGifit}>

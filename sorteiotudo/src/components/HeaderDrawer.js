@@ -13,7 +13,7 @@ const HeaderDrawer = props => {
     const isDark = props.darkMode
     return (
         <BackgroundImage style={estilos.container} source={menu}
-            blurRadius={8} resizeMode='cover'
+            blurRadius={0} resizeMode='cover'
         >
             <View style={estilos.logo}>
                 <Text style={estilos.textLogo}>LOGO</Text>

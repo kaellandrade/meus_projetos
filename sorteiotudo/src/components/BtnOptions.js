@@ -1,13 +1,11 @@
 import React, { useRef, useState } from 'react';
-import {StyleSheet, Dimensions, Vibration, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
-import { DELAY_SORTED, UM_SEGUNDO_MS } from '../util/constantes';
+import { DELAY_SORTED, } from '../util/constantes';
 import {
     useToast, Box,
     useDisclose,
     Stagger,
-    AlertDialog,
-    Button,
 
 } from 'native-base';
 import { connect } from 'react-redux'
@@ -25,7 +23,6 @@ const BtnOptions = props => {
     const [AlertisOpen, setIsOpen] = useState(false);
     const onClose = _ => setIsOpen(false);
     const onOpen = _ => setIsOpen(true);
-    const cancelRef = useRef();
 
     const sortearDelay = _ => {
         props.toggle_sortear()
@@ -37,7 +34,7 @@ const BtnOptions = props => {
 
     return (
         <Box style={[estilos.sorteio]}>
-            <Dialog cancelRef={cancelRef} AlertisOpen={AlertisOpen} onClose={onClose} deleteAllFriends={props.deleteAllFriends} />
+            <Dialog  AlertisOpen={AlertisOpen} onClose={onClose} deleteAllFriends={props.deleteAllFriends} />
             <Box alignItems="center">
                 <Stagger
                     visible={isOpen}
@@ -73,7 +70,7 @@ const BtnOptions = props => {
                     }}
                 >
                     <If condition={props.sorteados.length == props.cadastrados.length}>
-                        <MyIconButton opacity={0.7} Onpress={_ => {console.warn('Disparar E-mails')}} name='send' style={estilos.btnEmail} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                        <MyIconButton opacity={0.7} Onpress={_ => { console.warn('Disparar E-mails') }} name='send' style={estilos.btnEmail} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
                     </If>
 
                     <MyIconButton opacity={0.7} Onpress={sortearDelay} name='random' style={estilos.btnShuffle} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />

@@ -3,29 +3,30 @@ import { StyleSheet, Text, View } from 'react-native';
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { SearchBar } from 'react-native-elements';
-import { fontFamily } from 'styled-system';
+import { connect } from 'react-redux'
 const Painel = props => {
     const [search, setSearch] = useState('')
+    const styleTheme = props.darkMode ? { backgroundColor: 'black', color:'white' } : { backgroundColor: 'white', color:'black' }
     return (
-        <View style={estilos.painel}>
+        <View style={[estilos.painel, styleTheme]}>
             <View style={estilos.painelpesquisa}>
                 <SearchBar
                     placeholder="Procurar amigo..."
-                    lightTheme={true}
+                    lightTheme={!props.darkMode}
                     containerStyle={{ padding: 0 }}
                     value={search}
                     onChangeText={amigo => setSearch(amigo)}
-                    style={{ fontFamily: ESTILOS_COMUNS.fontPrincipal.light}}
+                    style={{ fontFamily: ESTILOS_COMUNS.fontPrincipal.light }}
 
 
                 />
             </View>
-            <View style={estilos.painelContagem}>
+            <View style={[estilos.painelContagem]}>
                 <Icon
                     color={ESTILOS_COMUNS.cores.azulPrimario}
                     name='person-add-outline'
                     size={ESTILOS_COMUNS.iconesTamanhos.grande} />
-                <Text style={estilos.placar}>{props.totalFrinds}</Text>
+                <Text style={[estilos.placar, styleTheme]}>{props.totalFrinds}</Text>
             </View>
         </View>
     );
@@ -39,12 +40,19 @@ const estilos = StyleSheet.create({
     painel: {
         flexDirection: 'row',
         backgroundColor: 'white',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
-    painelpesquisa: { width: '70%', padding:0, margin:0 },
+    painelpesquisa: { width: '70%', padding: 0, margin: 0 },
     painelContagem: { flexDirection: 'row', alignItems: 'center', flex: 1, justifyContent: 'space-around' },
-    
+
 
 })
 
-export default Painel;
+const mapStateToProps = ({ config }) => {
+    return {
+        darkMode: config.darkMode
+    }
+}
+
+
+export default connect(mapStateToProps, null)(Painel);

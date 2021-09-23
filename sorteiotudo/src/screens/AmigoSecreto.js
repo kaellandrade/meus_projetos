@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import IconBtn from '../components/IconButton'
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import { randomColor } from '../util/randomColor';
-import { Header } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Painel from '../components/painelSearch';
 import BtnOptions from '../components/BtnOptions';
@@ -17,7 +16,6 @@ import { VAZIO, NUMERO_MINIMO_AMIGOS, UM_SEGUNDO_MS } from '../util/constantes';
 import { Vibration } from 'react-native';
 import { SorteioSpinner } from '../components/spinnerSorteio';
 import If from '../components/If';
-import { backgroundColor, color } from 'styled-system';
 
 
 /**
@@ -63,7 +61,6 @@ const AmigoSecreto = (props) => {
             <View style={[estilos.container, isDark ? { backgroundColor: ESTILOS_COMUNS.cores.principal } : { backgroundColor: ESTILOS_COMUNS.cores.secundaria }]
             }>
                 <ModalFrind />
-
                 <Painel totalFrinds={amigosCadastrados.length} />
                 <SafeAreaView style={estilos.conteudo}>
                     {
