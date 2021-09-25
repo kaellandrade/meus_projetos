@@ -1,13 +1,14 @@
 import { Box, Switch } from 'native-base';
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image } from 'react-native';
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import menu from '../../assets/img/menu.png'
 import { BackgroundImage } from 'react-native-elements/dist/config';
 import { connect } from 'react-redux';
 import { toggleThemeMode } from '../store/actions/configs';
-
+import Logo from '../../assets/img/icone.png'
+import { borderDebug } from '../util/functionsDebugs'
 const HeaderDrawer = props => {
 
     const isDark = props.darkMode
@@ -16,48 +17,65 @@ const HeaderDrawer = props => {
             blurRadius={0} resizeMode='cover'
         >
             <View style={estilos.logo}>
-                <Text style={estilos.textLogo}>LOGO</Text>
+                <View>
+                    <Image style={estilos.imgLogo} source={Logo} />
+                </View>
+                <Text style={[estilos.textS]}> S</Text>
+                <Text style={estilos.textLogo}>orteio</Text>
+                <Text style={estilos.textS}>T</Text>
+                <Text style={estilos.textLogo}>udo</Text>
+
             </View>
             <Box style={estilos.painelControl}>
                 <Icon color={isDark ? 'gray' : 'black'} name='sun' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
                 <Switch
-                    onThumbColor={ESTILOS_COMUNS.cores.azulSecundario}
-                    onTrackColor={ESTILOS_COMUNS.cores.sucesso}
+                    onThumbColor={ESTILOS_COMUNS.cores.sucesso}
+                    onTrackColor={ESTILOS_COMUNS.cores.azulPrimario}
                     size='lg'
                     isChecked={props.darkMode}
                     onToggle={props.toggleThemeMode}
                 />
                 <Icon color={isDark ? 'black' : 'gray'} name='moon' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
             </Box>
-        </BackgroundImage>
+        </BackgroundImage >
     );
 }
 
 const estilos = StyleSheet.create({
     container: {
         height: Dimensions.get('screen').height * 1 / 8,
-        flexDirection: 'row',
-        justifyContent: "space-between",
     },
     painelControl: {
         flexDirection: 'row',
         height: 50,
         marginRight: 10,
         alignItems: 'center',
+        justifyContent:'flex-end',
+
     },
     logo: {
         borderColor: ESTILOS_COMUNS.cores.principal,
         flex: 1,
-        height: '50%',
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems:'center',
+        height:50,
 
+    },
+    imgLogo: {
+        width: 50,
+        height: 50,
+        marginLeft: 5
     },
     textLogo: {
         fontSize: 30,
-        fontFamily: ESTILOS_COMUNS.fontPrincipal.light,
-        textAlign: 'center',
-        color: ESTILOS_COMUNS.cores.principal,
+        fontFamily:ESTILOS_COMUNS.fontPrincipal.light
+
+    },
+    textS:{
+        fontSize: 40,
+        fontFamily:ESTILOS_COMUNS.fontLogo,
+        color:ESTILOS_COMUNS.cores.principal
+
     }
 })
 
