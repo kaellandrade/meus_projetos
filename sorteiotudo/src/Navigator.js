@@ -13,7 +13,6 @@ import {
     DrawerContentScrollView,
     DrawerItemList,
 } from '@react-navigation/drawer';
-import { Text } from 'react-native';
 import HeaderDrawer from './components/HeaderDrawer';
 
 

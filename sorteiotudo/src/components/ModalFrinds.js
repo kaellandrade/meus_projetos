@@ -5,6 +5,7 @@ import { closeModal } from "../store/actions/modal"
 import { addFriend, updateFriend } from '../store/actions/amigoSecreto'
 import { VAZIO } from '../util/constantes'
 import { Dimensions } from "react-native"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 const ModalFrind = props => {
     const inputName = useRef(null)
     let [name, setName] = useState('')
@@ -24,12 +25,20 @@ const ModalFrind = props => {
 
 
     const toast = useToast();
-    const updateOrAdd = _ => {
+    const updateOrAdd = async _ => {
         if (props.id !== undefined) {
             props.updateFriend({ name, email, id: props.id })
             props.closeModal()
         } else { // Modo ADD
-            props.addFriend({ name, email })
+            // props.addFriend({ name, email })
+            try { // TODO:Tirar essa lógica daqui 
+                const amigos = await AsyncStorage.getItem("@amigos_cadastrados") || '[]'
+                const amigosArray = JSON.parse(amigos)
+                amigosArray.push({ name, email, id: Math.random() })
+                await AsyncStorage.setItem('@amigos_cadastrados', JSON.stringify(amigosArray))
+            } catch (error) {
+                console.log(error)
+            }
             setName('')
             setEmail('')
             inputName.current.focus();
@@ -72,7 +81,7 @@ const ModalFrind = props => {
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button.Group variant="ghost" space={2}>
+                    <Button.Group >
                         <Button
                             onPress={_ => props.closeModal()}
                             colorScheme="secondary"
@@ -81,7 +90,7 @@ const ModalFrind = props => {
                         </Button>
                         <Button
                             onPress={updateOrAdd}
-                            disabled={name.length === VAZIO || email.length === VAZIO}
+                            isDisabled={name.length === VAZIO || email.length === VAZIO}
                         >
                             {props.name ? 'Atualizar' : 'Cadastrar'}
                         </Button>

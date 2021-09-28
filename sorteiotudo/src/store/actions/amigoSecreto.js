@@ -1,4 +1,5 @@
-import { ADD_FRIEND, DELETE_FRIEND, SORTEAR, UPDATE_FRIEND, DELETE_ALL, TOGGLE_SCREEN_SORTED} from './actionsTypes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ADD_FRIEND, DELETE_FRIEND, SORTEAR, UPDATE_FRIEND, DELETE_ALL, TOGGLE_SCREEN_SORTED, SET_FRINDS } from './actionsTypes';
 /**
  * Ações relacionadas a tela amigo secreto.
  */
@@ -15,6 +16,27 @@ const deleteFriend = friendId => {
         payload: friendId
     }
 }
+const setFrinds = friends => {
+    return {
+        type: SET_FRINDS,
+        payload: friends
+    }
+}
+
+function getfrindStorage() {
+    return async function (dispatch){
+        const amigos = await AsyncStorage.getItem("@amigos_cadastrados")
+        console.log(amigos)
+        try {
+            return dispatch(setFrinds(JSON.parse(amigos)))
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
 const deleteAllFriends = _ => {
     return {
         type: DELETE_ALL
@@ -27,6 +49,7 @@ const updateFriend = friendId => {
         payload: friendId
     }
 }
+
 const sortear = value => {
     return {
         type: SORTEAR,
@@ -40,4 +63,4 @@ const toggle_sortear = _ => {
     }
 }
 
-export { addFriend, deleteFriend, updateFriend, sortear, deleteAllFriends, toggle_sortear }
+export { addFriend, deleteFriend, updateFriend, sortear, deleteAllFriends, toggle_sortear, setFrinds, getfrindStorage }

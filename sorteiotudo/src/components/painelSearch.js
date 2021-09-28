@@ -6,7 +6,7 @@ import { SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux'
 const Painel = props => {
     const [search, setSearch] = useState('')
-    const styleTheme = props.darkMode ? { backgroundColor: 'black', color:'white' } : { backgroundColor: 'white', color:'black' }
+    const styleTheme = props.darkMode ? { backgroundColor: 'black', color: 'white' } : { backgroundColor: 'white', color: 'black' }
     return (
         <View style={[estilos.painel, styleTheme]}>
             <View style={estilos.painelpesquisa}>
@@ -15,9 +15,10 @@ const Painel = props => {
                     lightTheme={!props.darkMode}
                     containerStyle={{ padding: 0 }}
                     value={search}
-                    onChangeText={amigo => setSearch(amigo)}
+                    onChangeText={value => setSearch(value)}
                     style={{ fontFamily: ESTILOS_COMUNS.fontPrincipal.light }}
-
+                    onSubmitEditing={_ => console.log('Pesquisando...')}
+                    onClear={_=>console.log('Limpando...')}
 
                 />
             </View>

@@ -1,23 +1,22 @@
+import React, { useEffect } from 'react';
+import { Vibration, Dimensions, SafeAreaView, StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native';
 import { FlatList, Box } from 'native-base';
-import React from 'react';
-import { Dimensions, SafeAreaView, StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome'
+import BtnOptions from '../components/BtnOptions';
+
+import { SorteioSpinner } from '../components/spinnerSorteio';
 import IconBtn from '../components/IconButton'
+import If from '../components/If';
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import { randomColor } from '../util/randomColor';
-import Icon from 'react-native-vector-icons/FontAwesome'
 import Painel from '../components/painelSearch';
-import BtnOptions from '../components/BtnOptions';
 import ModalFrind from '../components/ModalFrinds';
-import { openModal } from '../store/actions/modal';
-import { deleteFriend, addFriend } from '../store/actions/amigoSecreto';
-import TutorialAdd from '../components/TutorialAdd';
 import { VAZIO, NUMERO_MINIMO_AMIGOS, UM_SEGUNDO_MS } from '../util/constantes';
-import { Vibration } from 'react-native';
-import { SorteioSpinner } from '../components/spinnerSorteio';
-import If from '../components/If';
+import { openModal } from '../store/actions/modal';
+import TutorialAdd from '../components/TutorialAdd';
 
-
+import { deleteFriend, addFriend, getfrindStorage } from '../store/actions/amigoSecreto';
 /**
  * Função responsável por renderizar os amigos.
         borderColor: ESTILOS_COMUNS.cores.azulSecundario,
@@ -53,8 +52,14 @@ const renderFriend = ({ item }, props) => {
 }
 
 const AmigoSecreto = (props) => {
+
     const amigosCadastrados = props.cadastrados
     const isDark = props.darkMode
+    useEffect(_ => {
+        props.getfrindStorage();
+    }, [])
+
+
     return (
         props.telaSorteando ? <SorteioSpinner texto='Sorteando amigos' /> :
 
@@ -166,6 +171,7 @@ const mapDispatchToProps = dispach => {
         openModal: mode => dispach(openModal(mode)),
         deleteFriend: id => dispach(deleteFriend(id)),
         addFriend: frind => dispach(addFriend(frind)),
+        getfrindStorage: _ => dispach(getfrindStorage())
     }
 }
 

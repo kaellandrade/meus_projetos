@@ -73,7 +73,7 @@ const estilos = StyleSheet.create({
     },
     textS:{
         fontSize: 40,
-        fontFamily:ESTILOS_COMUNS.fontLogo,
+        fontFamily:ESTILOS_COMUNS.fontPrincipal.light,
         color:ESTILOS_COMUNS.cores.principal
 
     }
