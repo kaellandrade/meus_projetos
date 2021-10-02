@@ -5,7 +5,6 @@ import { closeModal } from "../store/actions/modal"
 import {updateFriend, addStorageFriend } from '../store/actions/amigoSecreto'
 import { VAZIO } from '../util/constantes'
 import { Dimensions } from "react-native"
-import AsyncStorage from "@react-native-async-storage/async-storage"
 const ModalFrind = props => {
     const inputName = useRef(null)
     let [name, setName] = useState('')
@@ -31,7 +30,7 @@ const ModalFrind = props => {
             props.closeModal()
         } else { // Modo ADD
             try { 
-                props.addFriend(name, email)
+                props.addFriend({name, email})
             } catch (error) {
                 console.log(error)
             }
@@ -109,8 +108,8 @@ const mapStateToProps = ({ modal }) => {
 const mapDispatchToProps = dispach => {
     return {
         closeModal: _ => dispach(closeModal()),
-        addFriend: frind => dispach(addStorageFriend(frind)),
-        updateFriend: friend => dispach(updateFriend(friend))
+        addFriend: ({name, email}) => dispach(addStorageFriend({name,email})),
+        updateFriend: ({name, email, id}) => dispach(updateFriend(name, email, id))
     }
 }
 
