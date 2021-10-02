@@ -3,36 +3,17 @@ import { sortear } from '../../util/randomFriends'
 
 const initialState = {
     amigosCadastrados: [
-        // { id: Math.random(), name: 'Micael Andrade', email: "mikael.java@gmail.com" },
-        // { id: Math.random(), name: 'Joice Andrade', email: "joice.java@gmail.com" },
-        // { id: Math.random(), name: 'Paulo Andrade', email: "mikael.java@gmail.com" },
-        // { id: Math.random(), name: 'Dani Andrade', email: "mikael.java@gmail.com" },
-        // { id: Math.random(), name: 'Manoel Andrade', email: "mikael.java@gmail.com" },
-        // { id: Math.random(), name: 'Jéssica Andrade', email: "mikael.java@gmail.com" }
     ],
     sorteio: [],
     telaSorteando: false
 }
 
 reducer = (state = initialState, action) => {
-    if (action.type === ADD_FRIEND) {
-
-        const newFrind = {
-            id: Math.random(),
-            ...action.payload
-        }
+    if (action.type === SET_FRINDS) {
 
         return {
             ...state,
-            amigosCadastrados: state.amigosCadastrados.concat(newFrind),
-            sorteio: []
-        }
-    } else if (action.type === DELETE_FRIEND) {
-        return {
-            ...state,
-            amigosCadastrados: state.amigosCadastrados.filter(({ id }) => (id != action.payload)),
-            sorteio: []
-
+            amigosCadastrados: action.payload ? action.payload : []
         }
     } else if (action.type === UPDATE_FRIEND) {
         return {
@@ -61,11 +42,6 @@ reducer = (state = initialState, action) => {
         return {
             ...state,
             telaSorteando: !state.telaSorteando
-        }
-    } else if (action.type === SET_FRINDS) {
-        return {
-            ...state,
-            amigosCadastrados: action.payload ? action.payload : []
         }
     }
     else {
