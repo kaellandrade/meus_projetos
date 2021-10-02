@@ -166,12 +166,12 @@ const mapStateToProps = ({ friends, config }) => {
     }
 }
 
-const mapDispatchToProps = dispach => {
+const mapDispatchToProps = dispatch => {
     return {
-        openModal: mode => dispach(openModal(mode)),
-        deleteFriend: id => dispach(deleteStorageFriend(id)),
-        addFriend: frind => dispach(addFriend(frind)),
-        getfrindStorage: _ => dispach(getfrindStorage())
+        openModal: mode => dispatch(openModal(mode)),
+        deleteFriend: id => dispatch(deleteStorageFriend(id)),
+        addFriend: frind => dispatch(addFriend(frind)),
+        getfrindStorage: _ => dispatch(getfrindStorage())
     }
 }
 
