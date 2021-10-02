@@ -1,12 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-    ADD_FRIEND,
-    DELETE_FRIEND,
     SORTEAR,
-    UPDATE_FRIEND,
-    DELETE_ALL,
     TOGGLE_SCREEN_SORTED,
-    SET_FRINDS
+    SET_FRINDS,
+    PESQUISAR
 } from './actionsTypes';
 /**
  * Ações relacionadas a tela amigo secreto.
@@ -18,23 +15,19 @@ const setFrinds = friends => {
         payload: friends
     }
 }
-const deleteAllFriends = _ => {
-    return {
-        type: DELETE_ALL
-    }
-}
 
-const updateFriend = friendId => {
-    return {
-        type: UPDATE_FRIEND,
-        payload: friendId
-    }
-}
 
 const sortear = value => {
     return {
         type: SORTEAR,
         payload: value
+    }
+}
+
+const pesquisar = nameOrEmail =>{
+    return {
+        type:PESQUISAR,
+        payload:nameOrEmail
     }
 }
 
@@ -63,7 +56,7 @@ function getfrindStorage() {
  * Adiciona um amigo ao Local Storage. 
  * TODO: Tratamento de erros.
  */
-const addStorageFriend = ({name, email}) => {
+const addStorageFriend = ({ name, email }) => {
     return async function (dispach) {
         const amigos = await AsyncStorage.getItem("@amigos_cadastrados") || '[]'
         const amigosArray = JSON.parse(amigos)
@@ -93,16 +86,41 @@ const deleteStorageFriend = (key) => {
         }
     }
 }
+/**
+ * Recebe os novos valroes de um amigo e atualiza-o.
+ */
+const updateStorageFriend = ({ name, email, id }) => {
+    return async function (dispach) {
+
+        const amigos = await AsyncStorage.getItem("@amigos_cadastrados") || '[]'
+        let amigosArray = JSON.parse(amigos)
+
+        amigosArray = amigosArray.map((friend) => {
+            if (friend.id === id) {
+                return { ...friend, name: name, email: email }
+            }
+            else {
+                return friend
+            }
+        }),
+            await AsyncStorage.setItem("@amigos_cadastrados", JSON.stringify(amigosArray))
+        try {
+            return dispach(getfrindStorage())
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
 
 
 
 export {
-    updateFriend,
     sortear,
-    deleteAllFriends,
     toggle_sortear,
     setFrinds,
     getfrindStorage,
     addStorageFriend,
-    deleteStorageFriend
+    deleteStorageFriend,
+    updateStorageFriend,
+    pesquisar
 }

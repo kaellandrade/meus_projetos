@@ -5,6 +5,8 @@ const SORTEAR = 'SORTEAR';
 const TOGGLE_SCREEN_SORTED = 'TOGGLE_SCREEN_SORTED'
 const TOGGLE_THEME_MODE = 'TOGGLE_THEME_MODE'
 const SET_FRINDS = 'SET_FRINDS'
+const PESQUISAR = 'PESQUISAR'
+
 /**
  * Ações para o modal.
  */
@@ -18,6 +20,6 @@ export {
     SORTEAR,
     TOGGLE_SCREEN_SORTED,
     TOGGLE_THEME_MODE,
-    SET_FRINDS
-
+    SET_FRINDS,
+    PESQUISAR
 }
