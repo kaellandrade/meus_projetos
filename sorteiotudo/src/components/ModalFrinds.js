@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { Button, Modal, Input, useToast } from "native-base"
 import { connect } from "react-redux"
 import { closeModal } from "../store/actions/modal"
-import { addFriend, updateFriend } from '../store/actions/amigoSecreto'
+import {updateFriend, addStorageFriend } from '../store/actions/amigoSecreto'
 import { VAZIO } from '../util/constantes'
 import { Dimensions } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
@@ -30,12 +30,8 @@ const ModalFrind = props => {
             props.updateFriend({ name, email, id: props.id })
             props.closeModal()
         } else { // Modo ADD
-            // props.addFriend({ name, email })
-            try { // TODO:Tirar essa lógica daqui 
-                const amigos = await AsyncStorage.getItem("@amigos_cadastrados") || '[]'
-                const amigosArray = JSON.parse(amigos)
-                amigosArray.push({ name, email, id: Math.random() })
-                await AsyncStorage.setItem('@amigos_cadastrados', JSON.stringify(amigosArray))
+            try { 
+                props.addFriend(name, email)
             } catch (error) {
                 console.log(error)
             }
@@ -113,7 +109,7 @@ const mapStateToProps = ({ modal }) => {
 const mapDispatchToProps = dispach => {
     return {
         closeModal: _ => dispach(closeModal()),
-        addFriend: frind => dispach(addFriend(frind)),
+        addFriend: frind => dispach(addStorageFriend(frind)),
         updateFriend: friend => dispach(updateFriend(friend))
     }
 }
