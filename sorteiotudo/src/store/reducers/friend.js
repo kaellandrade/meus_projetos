@@ -41,7 +41,6 @@ reducer = (state = initialState, action) => {
         }
     } else if (type === PESQUISAR) {
         const { payload } = action;
-        console.log(payload)
         return {
             ...state,
             amigosCadastrados: state.amigosCadastrados.filter(({ name }) => name == payload)
