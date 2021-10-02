@@ -16,7 +16,7 @@ import { VAZIO, NUMERO_MINIMO_AMIGOS, UM_SEGUNDO_MS } from '../util/constantes';
 import { openModal } from '../store/actions/modal';
 import TutorialAdd from '../components/TutorialAdd';
 
-import { deleteFriend, addFriend, getfrindStorage } from '../store/actions/amigoSecreto';
+import { deleteStorageFriend, addFriend, getfrindStorage } from '../store/actions/amigoSecreto';
 /**
  * Função responsável por renderizar os amigos.
         borderColor: ESTILOS_COMUNS.cores.azulSecundario,
@@ -169,7 +169,7 @@ const mapStateToProps = ({ friends, config }) => {
 const mapDispatchToProps = dispach => {
     return {
         openModal: mode => dispach(openModal(mode)),
-        deleteFriend: id => dispach(deleteFriend(id)),
+        deleteFriend: id => dispach(deleteStorageFriend(id)),
         addFriend: frind => dispach(addFriend(frind)),
         getfrindStorage: _ => dispach(getfrindStorage())
     }
