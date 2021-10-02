@@ -4,6 +4,7 @@ import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux'
+import { pesquisar, getfrindStorage } from '../store/actions/amigoSecreto'
 const Painel = props => {
     const [search, setSearch] = useState('')
     const styleTheme = props.darkMode ? { backgroundColor: 'black', color: 'white' } : { backgroundColor: 'white', color: 'black' }
@@ -17,8 +18,8 @@ const Painel = props => {
                     value={search}
                     onChangeText={value => setSearch(value)}
                     style={{ fontFamily: ESTILOS_COMUNS.fontPrincipal.light }}
-                    onSubmitEditing={_ => console.log('Pesquisando...')}
-                    onClear={_=>console.log('Limpando...')}
+                    onSubmitEditing={_ => props.pesquisarAmigo(search)}
+                    onClear={props.getfrindStorage}
 
                 />
             </View>
@@ -55,5 +56,12 @@ const mapStateToProps = ({ config }) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        pesquisarAmigo: valor => dispatch(pesquisar(valor)),
+        getfrindStorage: _ => dispatch(getfrindStorage())
 
-export default connect(mapStateToProps, null)(Painel);
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Painel);
