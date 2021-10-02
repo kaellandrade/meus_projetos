@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { Button, Modal, Input, useToast } from "native-base"
 import { connect } from "react-redux"
 import { closeModal } from "../store/actions/modal"
-import {updateFriend, addStorageFriend } from '../store/actions/amigoSecreto'
+import {updateStorageFriend, addStorageFriend } from '../store/actions/amigoSecreto'
 import { VAZIO } from '../util/constantes'
 import { Dimensions } from "react-native"
 const ModalFrind = props => {
@@ -109,7 +109,7 @@ const mapDispatchToProps = dispach => {
     return {
         closeModal: _ => dispach(closeModal()),
         addFriend: ({name, email}) => dispach(addStorageFriend({name,email})),
-        updateFriend: ({name, email, id}) => dispach(updateFriend(name, email, id))
+        updateFriend: ({name, email, id}) => dispach(updateStorageFriend({name, email, id}))
     }
 }
 
