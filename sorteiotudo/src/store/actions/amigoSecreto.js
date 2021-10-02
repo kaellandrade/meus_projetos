@@ -63,8 +63,7 @@ function getfrindStorage() {
  * Adiciona um amigo ao Local Storage. 
  * TODO: Tratamento de erros.
  */
-const addStorageFriend = (name, email) => {
-
+const addStorageFriend = ({name, email}) => {
     return async function (dispach) {
         const amigos = await AsyncStorage.getItem("@amigos_cadastrados") || '[]'
         const amigosArray = JSON.parse(amigos)
