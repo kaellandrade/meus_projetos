@@ -8,7 +8,6 @@ import { BackgroundImage } from 'react-native-elements/dist/config';
 import { connect } from 'react-redux';
 import { toggleThemeMode } from '../store/actions/configs';
 import Logo from '../../assets/img/icone.png'
-import { borderDebug } from '../util/functionsDebugs'
 const HeaderDrawer = props => {
 
     const isDark = props.darkMode
@@ -20,10 +19,7 @@ const HeaderDrawer = props => {
                 <View>
                     <Image style={estilos.imgLogo} source={Logo} />
                 </View>
-                <Text style={[estilos.textS]}> S</Text>
-                <Text style={estilos.textLogo}>orteio</Text>
-                <Text style={estilos.textS}>T</Text>
-                <Text style={estilos.textLogo}>udo</Text>
+                <Text style={estilos.textLogo}>SorteioTudo</Text>
 
             </View>
             <Box style={estilos.painelControl}>
@@ -68,15 +64,10 @@ const estilos = StyleSheet.create({
     },
     textLogo: {
         fontSize: 30,
-        fontFamily:ESTILOS_COMUNS.fontPrincipal.light
+        fontFamily:ESTILOS_COMUNS.fontPrincipal.thin
 
     },
-    textS:{
-        fontSize: 40,
-        fontFamily:ESTILOS_COMUNS.fontPrincipal.light,
-        color:ESTILOS_COMUNS.cores.principal
 
-    }
 })
 
 const mapStateToProps = ({ config }) => {
