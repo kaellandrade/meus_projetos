@@ -8,8 +8,11 @@ import { BackgroundImage } from 'react-native-elements/dist/config';
 import { connect } from 'react-redux';
 import { toggleThemeMode } from '../store/actions/configs';
 import Logo from '../../assets/img/icone.png'
-const HeaderDrawer = props => {
 
+/**
+ * Cabeçalho da barra de navegação.
+ */
+const HeaderDrawer = props => {
     const isDark = props.darkMode
     return (
         <BackgroundImage style={estilos.container} source={menu}
