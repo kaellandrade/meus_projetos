@@ -98,7 +98,6 @@ const ModalFrind = props => {
                         InputLeftElement={
                             <Icon name='envelope' size={20} style={{ margin: 5 }} color='gray' />
                         }
-
                     />
                 </Modal.Body>
                 <Modal.Footer>
