@@ -7,7 +7,6 @@ import menu from '../../assets/img/menu.png'
 import { BackgroundImage } from 'react-native-elements/dist/config';
 import { connect } from 'react-redux';
 import { toggleThemeMode } from '../store/actions/configs';
-import Logo from '../../assets/img/icone.png'
 
 /**
  * Cabeçalho da barra de navegação.
@@ -19,11 +18,7 @@ const HeaderDrawer = props => {
             blurRadius={0} resizeMode='cover'
         >
             <View style={estilos.logo}>
-                <View>
-                    <Image style={estilos.imgLogo} source={Logo} />
-                </View>
                 <Text style={estilos.textLogo}>SorteioTudo</Text>
-
             </View>
             <Box style={estilos.painelControl}>
                 <Icon color={isDark ? 'gray' : 'black'} name='sun' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
@@ -66,7 +61,7 @@ const estilos = StyleSheet.create({
         marginLeft: 5
     },
     textLogo: {
-        fontSize: 30,
+        fontSize: 40,
         fontFamily:ESTILOS_COMUNS.fontPrincipal.thin
 
     },
