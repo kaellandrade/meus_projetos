@@ -25,7 +25,8 @@ const ESTILOS_COMUNS = {
     iconesTamanhos: {
         pequeno: 10,
         medio: 20,
-        grande: 30
+        grande: 30,
+        extraGrande:40
     },
     sobraBtns: {
         shadowColor: "#000",

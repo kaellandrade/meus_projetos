@@ -98,7 +98,7 @@ const AmigoSecreto = (props) => {
                         }
                     >
                         <View style={estilos.butonAdd}>
-                            <Icon color={ESTILOS_COMUNS.cores.secundaria} name='plus' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                            <Icon color={ESTILOS_COMUNS.cores.secundaria} name='plus' size={ESTILOS_COMUNS.iconesTamanhos.extraGrande} />
                         </View>
                     </TouchableWithoutFeedback>
                 </SafeAreaView>
@@ -149,12 +149,12 @@ const estilos = StyleSheet.create({
     },
     butonAdd: {
         backgroundColor: ESTILOS_COMUNS.cores.sucesso,
-        width: 60,
-        height: 60,
-        borderRadius: 30,
+        width: 80,
+        height: 80,
+        borderRadius: 40,
         position: 'absolute',
         bottom: 10,
-        right: Dimensions.get('window').width * 1 / 2 - 30,
+        right: Dimensions.get('window').width * 1 / 2 - 40,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: ESTILOS_COMUNS.cores.principal,
