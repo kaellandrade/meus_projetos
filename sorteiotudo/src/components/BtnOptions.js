@@ -18,6 +18,7 @@ const BtnOptions = props => {
     const toast = useToast();
     const SORTEADOS = props.sorteados.length;
     const CADASTRADOS = props.cadastrados.length;
+    const isDark = props.darkMode;
 
 
     const [AlertisOpen, setIsOpen] = useState(false);
@@ -34,7 +35,7 @@ const BtnOptions = props => {
 
     return (
         <Box style={[estilos.sorteio]}>
-            <Dialog  AlertisOpen={AlertisOpen} onClose={onClose} deleteAllFriends={props.deleteAllFriends} />
+            <Dialog AlertisOpen={AlertisOpen} onClose={onClose} deleteAllFriends={props.deleteAllFriends} />
             <Box alignItems="center">
                 <Stagger
                     visible={isOpen}
@@ -70,16 +71,41 @@ const BtnOptions = props => {
                     }}
                 >
                     <If condition={props.sorteados.length == props.cadastrados.length}>
-                        <MyIconButton opacity={0.7} Onpress={_ => { console.warn('Disparar E-mails') }} name='send' style={estilos.btnEmail} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                        <MyIconButton
+                            opacity={0.9}
+                            Onpress={_ => { console.warn('Disparar E-mails') }}
+                            name='send' 
+                            style={{...estilos.btnEmail, ...isDark?{ borderColor: '#ffff' }:{borderColor:'#444444'}}}
+                            color='white'
+                            size={ESTILOS_COMUNS.iconesTamanhos.grande} />
                     </If>
 
-                    <MyIconButton opacity={0.7} Onpress={sortearDelay} name='random' style={estilos.btnShuffle} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
-                    <MyIconButton opacity={0.7} Onpress={onOpen} name='trash' style={estilos.btnTrash} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    <MyIconButton
+                        opacity={0.9}
+                        Onpress={sortearDelay}
+                        name='random'
+                        style={{ ...estilos.btnShuffle, ...isDark ? { borderColor: '#ffff' } : { borderColor: '#444444' } }}
+                        color='white'
+                        size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    <MyIconButton
+                        opacity={0.9}
+                        Onpress={onOpen}
+                        name='trash'
+                        style={{ ...estilos.btnTrash, ...isDark ? { borderColor: '#ffff' } : { borderColor: '#444444' } }}
+                        color='white'
+                        size={ESTILOS_COMUNS.iconesTamanhos.grande} />
 
                 </Stagger>
             </Box>
 
-            <MyIconButton opacity={0.7} Onpress={onToggle} name='gift' style={estilos.btnOptions} color='white' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+            <MyIconButton
+                opacity={1}
+                Onpress={onToggle}
+                name='gift'
+                style={{ ...estilos.btnOptions, ...isDark ? { borderColor: '#ffff' } : { borderColor: '#444444' } }}
+                color='white'
+                size={ESTILOS_COMUNS.iconesTamanhos.grande}
+            />
 
         </Box >
     );
@@ -129,7 +155,6 @@ const estilos = StyleSheet.create({
         backgroundColor: ESTILOS_COMUNS.cores.amizade,
         borderRadius: 30,
         borderWidth: 1,
-        borderColor: ESTILOS_COMUNS.cores.principal,
         width: 60,
         height: 60,
         marginBottom: 10,
@@ -153,10 +178,11 @@ const estilos = StyleSheet.create({
 
 })
 
-const mapStateToProps = ({ friends }) => {
+const mapStateToProps = ({ friends, config }) => {
     return {
         sorteados: friends.sorteio,
-        cadastrados: friends.amigosCadastrados
+        cadastrados: friends.amigosCadastrados,
+        darkMode: config.darkMode
     }
 }
 
