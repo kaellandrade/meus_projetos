@@ -147,10 +147,10 @@ const estilos = StyleSheet.create({
         color: '#fffa'
     },
     whiteModeFont: {
-        color: 'black'
+        color: '#000'
     },
     whiteModeContent: {
-        backgroundColor: 'white'
+        backgroundColor: '#FFF'
     },
     title: {
         fontWeight: 'bold',
