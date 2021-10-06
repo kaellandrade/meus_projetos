@@ -58,7 +58,12 @@ function MyDrawer() {
                         leftComponent={_ => <IconSimp onPress={navigation.navigation.openDrawer}
                             size={ESTILOS_COMUNS.iconesTamanhos.medio}
                             name='menu'
-                            style={{ padding: 10, color: ESTILOS_COMUNS.cores.secundaria }} />}
+                            style={
+                                {
+                                    padding: 10,
+                                    color: ESTILOS_COMUNS.cores.secundaria,
+                                }
+                            } />}
                         centerComponent={
                             {
                                 text: `${navigation.route.name}`,

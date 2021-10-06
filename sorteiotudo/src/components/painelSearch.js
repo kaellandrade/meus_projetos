@@ -20,7 +20,6 @@ const Painel = props => {
                     style={{ fontFamily: ESTILOS_COMUNS.fontPrincipal.light }}
                     onSubmitEditing={_ => props.pesquisarAmigo(search)}
                     onClear={props.getfrindStorage}
-
                 />
             </View>
             <View style={[estilos.painelContagem]}>
@@ -44,8 +43,17 @@ const estilos = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'space-between',
     },
-    painelpesquisa: { width: '70%', padding: 0, margin: 0 },
-    painelContagem: { flexDirection: 'row', alignItems: 'center', flex: 1, justifyContent: 'space-around' },
+    painelpesquisa: {
+        width: '70%',
+        padding: 0,
+        margin: 0,
+    },
+    painelContagem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'space-around'
+    },
 
 
 })

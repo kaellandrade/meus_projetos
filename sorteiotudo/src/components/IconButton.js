@@ -5,7 +5,8 @@ import { borderDebug } from '../util/functionsDebugs';
 
 const IconButton = props => {
     return (
-        <TouchableOpacity activeOpacity={props.opacity} onPress={props.Onpress} style={{ marginLeft: 5, padding: 10, ...props.style }}>
+        <TouchableOpacity activeOpacity={props.opacity} onPress={props.Onpress}
+            style={{ marginLeft: 5, padding: 10, ...props.style }}>
             <Icon color={props.color} name={props.name} size={props.size} />
         </TouchableOpacity>
     );

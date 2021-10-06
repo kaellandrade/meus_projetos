@@ -7,9 +7,10 @@ import {
     addStorageFriend
 } from '../store/actions/amigoSecreto';
 import { VAZIO } from '../util/constantes';
-import { Dimensions } from "react-native";
+import { Dimensions, Text, StyleSheet } from "react-native";
 import { validateEmail } from '../validations/validateFuncs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import If from '../components/If';
 /**
  * Modal de cadastro e atualização de Amigos.
  */
@@ -18,6 +19,7 @@ const ModalFrind = props => {
     const inputName = useRef(null)
     const inputEmail = useRef(null)
     const toast = useToast();
+    const darkMode = props.darkMode;
     let [name, setName] = useState('')
     let [email, setEmail] = useState('')
 
@@ -68,13 +70,23 @@ const ModalFrind = props => {
             isOpen={props.showModal}
             onClose={props.closeModal}
             size='lg'
+
         >
-            <Modal.Content>
+            <Modal.Content style={darkMode ? estilos.darkModeContent : estilos.whiteModeContent}>
                 <Modal.CloseButton />
-                <Modal.Header>Insira novos amigos!</Modal.Header>
+                <Modal.Header>
+                    <Text style={[estilos.title, darkMode ? estilos.darkModeFont : estilos.whiteModeFont]}>
+                        {props.name ? 'Atualize seu amigo!' : 'Insira um novo amigo!'}
+                    </Text>
+                </Modal.Header>
                 <Modal.Body>
-                    Ah, lembre-se de colocar um email válido 😉!
+                    <If condition={!props.name}>
+                        <Text style={darkMode ? estilos.darkModeFont : estilos.whiteModeFont}>
+                            Ah, lembre-se de colocar um email válido! 😉
+                        </Text>
+                    </If>
                     <Input
+                        style={darkMode ? {color:'white'} : estilos.whiteModeFont}
                         mt={4}
                         placeholder="Nome do amigo..."
                         value={name}
@@ -88,6 +100,7 @@ const ModalFrind = props => {
 
                     />
                     <Input
+                        style={darkMode ? {color:'white'} : estilos.whiteModeFont}
                         ref={inputEmail}
                         mt={4}
                         placeholder="E-mail do amigo"
@@ -100,8 +113,10 @@ const ModalFrind = props => {
                         }
                     />
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button.Group >
+                <Modal.Footer
+                    style={darkMode ? estilos.darkModeFooter : estilos.whiteModeContent}
+                >
+                    <Button.Group>
                         <Button
                             onPress={_ => props.closeModal()}
                             colorScheme="secondary"
@@ -121,13 +136,36 @@ const ModalFrind = props => {
     )
 }
 
-const mapStateToProps = ({ modal }) => {
+const estilos = StyleSheet.create({
+    darkModeContent: {
+        backgroundColor: "#222831"
+    },
+    darkModeFooter: {
+        backgroundColor: '#132743'
+    },
+    darkModeFont: {
+        color: '#fffa'
+    },
+    whiteModeFont: {
+        color: '#000'
+    },
+    whiteModeContent: {
+        backgroundColor: '#FFF'
+    },
+    title: {
+        fontWeight: 'bold',
+        textAlign: 'center'
+    }
+})
+
+const mapStateToProps = ({ modal, config }) => {
     return {
         showModal: modal.showModal,
         updateMode: modal.updateMode,
         name: modal.updateMode.name,
         email: modal.updateMode.email,
-        id: modal.updateMode.id
+        id: modal.updateMode.id,
+        darkMode: config.darkMode
     }
 }
 const mapDispatchToProps = dispach => {
@@ -135,6 +173,7 @@ const mapDispatchToProps = dispach => {
         closeModal: _ => dispach(closeModal()),
         addFriend: ({ name, email }) => dispach(addStorageFriend({ name, email })),
         updateFriend: ({ name, email, id }) => dispach(updateStorageFriend({ name, email, id }))
+
     }
 }
 
