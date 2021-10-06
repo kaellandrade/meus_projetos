@@ -45,7 +45,8 @@ const colorScrens = (nameScreen) => {
     }
 }
 
-function MyDrawer() {
+function MyDrawer(props) {
+    const isDark = props.darkMode;
     return (
         <Drawer.Navigator
             screenOptions={(navigation) => (
@@ -83,34 +84,48 @@ function MyDrawer() {
         >
             <Drawer.Screen
                 options={({ navigation, route }) => ({
-                    drawerIcon: _ => <FontIcon name='gifts' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    drawerIcon: _ => <FontIcon
+                        color={isDark ? '#fff9' : 'black'}
+                        name='gifts'
+                        size={ESTILOS_COMUNS.iconesTamanhos.grande} />
                 })}
-                name="Amigo Secreto" component={AmigoSecreto} />
+                name="Amigo Secreto"
+                component={AmigoSecreto}
+            />
             <Drawer.Screen
                 options={({ navigation, route }) => ({
-                    drawerIcon: _ => <FontIcon name='list-ol' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    drawerIcon: _ => <FontIcon
+                        name='list-ol'
+                        size={ESTILOS_COMUNS.iconesTamanhos.grande}
+                        color={isDark ? '#fff9' : 'black'}
+                    />
                 })}
                 name="Apresentações" component={Apresentacoes} />
             <Drawer.Screen
                 options={({ navigation, route }) => ({
-                    drawerIcon: _ => <FontIcon name='dice' size={ESTILOS_COMUNS.iconesTamanhos.grande} />
+                    drawerIcon: _ => <FontIcon name='dice'
+                        size={ESTILOS_COMUNS.iconesTamanhos.grande}
+                        color={isDark ? '#fff9' : 'black'} />
                 })}
                 name="Loterias" component={Loterias} />
         </Drawer.Navigator >
     );
 }
 const Navigator = props => {
+    const isDark = props.darkMode;
     return (
         <NavigationContainer theme={{
             ...DefaultTheme, colors: {
                 ...DefaultTheme.colors,
-                primary: ESTILOS_COMUNS.cores.sucesso,
-                card: 'black'
+                primary: ESTILOS_COMUNS.cores.azulPrimario,
+                card: isDark ? '#242526' : 'white',
+                text: isDark ? 'white' : 'black'
             }
+
         }}
         >
             <NativeBaseProvider config={config}>
-                {MyDrawer()}
+                {MyDrawer(props)}
             </NativeBaseProvider>
         </NavigationContainer>
     )
