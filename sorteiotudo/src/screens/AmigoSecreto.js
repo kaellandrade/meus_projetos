@@ -71,6 +71,7 @@ const AmigoSecreto = (props) => {
                 [
                     estilos.container,
                     isDark ? { backgroundColor: '#171717' } : { backgroundColor: ESTILOS_COMUNS.cores.secundaria }
+                    
                 ]
             }>
                 <ModalFrind />
@@ -97,8 +98,11 @@ const AmigoSecreto = (props) => {
                             }
                         }
                     >
-                        <View style={estilos.butonAdd}>
-                            <Icon color={ESTILOS_COMUNS.cores.secundaria} name='plus' size={ESTILOS_COMUNS.iconesTamanhos.extraGrande} />
+                        <View style={[estilos.butonAdd, isDark?{borderColor:'#ffff'}:{borderColor:'#444444'}]}>
+                            <Icon
+                                color={ESTILOS_COMUNS.cores.secundaria} name='plus'
+                                size={ESTILOS_COMUNS.iconesTamanhos.extraGrande}
+                            />
                         </View>
                     </TouchableWithoutFeedback>
                 </SafeAreaView>
@@ -157,7 +161,6 @@ const estilos = StyleSheet.create({
         right: Dimensions.get('window').width * 1 / 2 - 40,
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: ESTILOS_COMUNS.cores.principal,
         borderWidth: 1,
         shadowColor: "#000",
 
