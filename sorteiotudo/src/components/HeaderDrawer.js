@@ -18,10 +18,16 @@ const HeaderDrawer = props => {
             blurRadius={0} resizeMode='cover'
         >
             <View style={estilos.logo}>
-                <Text style={estilos.textLogo}>SorteioTudo</Text>
+                <Text
+                    style={[estilos.textLogo, isDark ? { color: 'white' } : { color: 'black' }]
+                    }>
+                    SorteioTudo
+                </Text>
             </View>
             <Box style={estilos.painelControl}>
-                <Icon color={isDark ? 'gray' : 'black'} name='sun' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
+                <Icon color={isDark ? '#fff' : 'black'}
+                    name='sun'
+                    size={ESTILOS_COMUNS.iconesTamanhos.medio} />
                 <Switch
                     onThumbColor={ESTILOS_COMUNS.cores.sucesso}
                     onTrackColor={ESTILOS_COMUNS.cores.azulPrimario}
@@ -29,7 +35,7 @@ const HeaderDrawer = props => {
                     isChecked={props.darkMode}
                     onToggle={props.toggleThemeMode}
                 />
-                <Icon color={isDark ? 'black' : 'gray'} name='moon' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
+                <Icon color={isDark ? '#ffd982' : 'gray'} name='moon' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
             </Box>
         </BackgroundImage >
     );
@@ -44,15 +50,15 @@ const estilos = StyleSheet.create({
         height: 50,
         marginRight: 10,
         alignItems: 'center',
-        justifyContent:'flex-end',
+        justifyContent: 'flex-end',
 
     },
     logo: {
         borderColor: ESTILOS_COMUNS.cores.principal,
         flex: 1,
         flexDirection: 'row',
-        alignItems:'center',
-        height:50,
+        alignItems: 'center',
+        height: 50,
 
     },
     imgLogo: {
@@ -62,7 +68,7 @@ const estilos = StyleSheet.create({
     },
     textLogo: {
         fontSize: 40,
-        fontFamily:ESTILOS_COMUNS.fontPrincipal.thin
+        fontFamily: ESTILOS_COMUNS.fontPrincipal.thin
 
     },
 
