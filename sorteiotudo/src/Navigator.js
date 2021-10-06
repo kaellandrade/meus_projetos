@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NativeBaseProvider } from 'native-base';
 import AmigoSecreto from './screens/AmigoSecreto';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Header } from 'react-native-elements/dist/header/Header';
 import { ESTILOS_COMUNS } from './styles/estilosComuns';
@@ -14,7 +14,7 @@ import {
     DrawerItemList,
 } from '@react-navigation/drawer';
 import HeaderDrawer from './components/HeaderDrawer';
-
+import { connect } from 'react-redux';
 
 const config = {
     dependencies: {
@@ -101,12 +101,26 @@ function MyDrawer() {
 }
 const Navigator = props => {
     return (
-        <NavigationContainer>
+        <NavigationContainer theme={{
+            ...DefaultTheme, colors: {
+                ...DefaultTheme.colors,
+                primary: ESTILOS_COMUNS.cores.sucesso,
+                card: 'black'
+            }
+        }}
+        >
             <NativeBaseProvider config={config}>
                 {MyDrawer()}
             </NativeBaseProvider>
         </NavigationContainer>
     )
 }
-export default Navigator;
+const mapStateToProps = ({ config }) => {
+    return {
+        darkMode: config.darkMode
+    }
+}
+
+
+export default connect(mapStateToProps, null)(Navigator);
 
