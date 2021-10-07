@@ -14,7 +14,9 @@ import {
     DrawerItemList,
 } from '@react-navigation/drawer';
 import HeaderDrawer from './components/HeaderDrawer';
+import FooterDrawer from './components/FooterDrawer';
 import { connect } from 'react-redux';
+import { View, SafeAreaView, StyleSheet } from 'react-native'
 
 const config = {
     dependencies: {
@@ -27,9 +29,18 @@ const Drawer = createDrawerNavigator();
 
 const CustomDrawer = (props) => {
     return (
-        <DrawerContentScrollView>
-            <HeaderDrawer />
-            <DrawerItemList {...props} />
+        <DrawerContentScrollView contentContainerStyle={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1 }}>
+                <View>
+                    <HeaderDrawer />
+                </View>
+                <View>
+                    <DrawerItemList {...props} />
+                </View>
+                <View style={styles.footer}>
+                    < FooterDrawer />
+                </View>
+            </SafeAreaView>
         </DrawerContentScrollView>
     )
 
@@ -130,6 +141,17 @@ const Navigator = props => {
         </NavigationContainer>
     )
 }
+
+
+const styles = StyleSheet.create({
+    footer: {
+        position: 'absolute',
+        bottom: -1,
+        right: 0,
+        width: '100%'
+    }
+})
+
 const mapStateToProps = ({ config }) => {
     return {
         darkMode: config.darkMode
