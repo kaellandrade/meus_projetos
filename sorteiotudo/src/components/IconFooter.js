@@ -15,8 +15,8 @@ const IconFooter = props => {
 const style = StyleSheet.create({
     circle: {
         backgroundColor: 'gray',
-        width: 60,
-        height: 60,
+        width: 40,
+        height: 40,
         alignContent: 'center',
         borderRadius: 30,
         justifyContent: 'center',
