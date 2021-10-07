@@ -80,7 +80,7 @@ const estilos = StyleSheet.create({
     titleFont: {
         fontSize: 20,
         textAlign: 'center',
-
+        color:'#fff',
         fontFamily: ESTILOS_COMUNS.fontPrincipal.medium,
     },
     contentText: {
@@ -91,7 +91,7 @@ const estilos = StyleSheet.create({
         margin: 5
     },
     likeTitle: {
-        color: ESTILOS_COMUNS.cores.principal,
+        color: '#fff',
         marginRight: 2
     },
     titleContainer: {
@@ -101,7 +101,7 @@ const estilos = StyleSheet.create({
         alignItems: 'center',
         borderBottomWidth: 0.5,
         width: '80%',
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     contentInfo:{
         backgroundColor:ESTILOS_COMUNS.cores.azulSecundario
