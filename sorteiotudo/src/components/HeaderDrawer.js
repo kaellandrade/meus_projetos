@@ -27,7 +27,7 @@ const HeaderDrawer = props => {
             <Box style={estilos.painelControl}>
                 <Icon color={isDark ? '#fff' : 'black'}
                     name='sun'
-                    size={ESTILOS_COMUNS.iconesTamanhos.medio} />
+                    size={isDark ? ESTILOS_COMUNS.iconesTamanhos.medio : ESTILOS_COMUNS.iconesTamanhos.grande} />
                 <Switch
                     onThumbColor={ESTILOS_COMUNS.cores.sucesso}
                     onTrackColor={ESTILOS_COMUNS.cores.azulPrimario}
@@ -35,7 +35,9 @@ const HeaderDrawer = props => {
                     isChecked={props.darkMode}
                     onToggle={props.toggleThemeMode}
                 />
-                <Icon color={isDark ? '#ffd982' : 'gray'} name='moon' size={ESTILOS_COMUNS.iconesTamanhos.medio} />
+                <Icon color={isDark ? '#ffd982' : 'gray'}
+                    name='moon'
+                    size={!isDark ? ESTILOS_COMUNS.iconesTamanhos.medio : ESTILOS_COMUNS.iconesTamanhos.grande} />
             </Box>
         </BackgroundImage >
     );
@@ -56,9 +58,8 @@ const estilos = StyleSheet.create({
     logo: {
         borderColor: ESTILOS_COMUNS.cores.principal,
         flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
         height: 50,
+        marginLeft: 10
 
     },
     imgLogo: {
@@ -68,7 +69,9 @@ const estilos = StyleSheet.create({
     },
     textLogo: {
         fontSize: 40,
-        fontFamily: ESTILOS_COMUNS.fontPrincipal.thin
+        fontFamily: ESTILOS_COMUNS.fontPrincipal.light,
+        color: ESTILOS_COMUNS.cores.azulPrimario
+
 
     },
 
