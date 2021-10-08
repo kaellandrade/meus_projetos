@@ -18,6 +18,7 @@ Permite a realização de sorteios de diversos tipos:
   <img src="./telas/dark.png" width="200" title='Login' />
   <img src="./telas/modal.png" width="200" title='Modal Light' />
   <img src="./telas/modalDark.png" width="200" title='Modal Dark' />
+  <img src="./telas/menudark.png" width="200" title='Modal Dark' />
 </p>
 
 # Tecnologias
