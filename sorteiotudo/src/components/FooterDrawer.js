@@ -1,10 +1,8 @@
-import { Box, Switch } from 'native-base';
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { ESTILOS_COMUNS } from '../styles/estilosComuns';
 import { connect } from 'react-redux';
 import { toggleThemeMode } from '../store/actions/configs';
-import { borderDebug } from '../util/functionsDebugs';
 import IconFooter from '../components/IconFooter';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 /**
@@ -14,7 +12,10 @@ const FooterDrawer = props => {
     const isDark = props.darkMode
     return (
         <View style={estilos.container}>
-            <View style={estilos.contentInfo}>
+            <View style={[
+                estilos.contentInfo,
+                isDark ? { backgroundColor: ESTILOS_COMUNS.cores.azulPrimario } : null
+            ]}>
                 <View style={estilos.titleContainer}>
                     < Icon
                         name='heart'
@@ -38,25 +39,30 @@ const FooterDrawer = props => {
                     name='github-alt'
                     size={ESTILOS_COMUNS.iconesTamanhos.medio}
                     colorBackground='#7e4291'
+                    isDark={isDark}
+
                 />
                 <IconFooter
                     color='#edeff2'
                     name='star'
                     size={ESTILOS_COMUNS.iconesTamanhos.medio}
                     colorBackground={ESTILOS_COMUNS.cores.azulSecundario}
+                    isDark={isDark}
+
                 />
                 <IconFooter
                     color='#edeff2'
                     name='share-alt'
                     size={ESTILOS_COMUNS.iconesTamanhos.medio}
                     colorBackground={ESTILOS_COMUNS.cores.larajan}
+                    isDark={isDark}
                 />
                 <IconFooter
                     color='#edeff2'
                     name='hand-holding-usd'
                     size={ESTILOS_COMUNS.iconesTamanhos.medio}
                     colorBackground={ESTILOS_COMUNS.cores.sucesso}
-
+                    isDark={isDark}
                 />
             </View>
         </View >
@@ -65,7 +71,7 @@ const FooterDrawer = props => {
 
 const estilos = StyleSheet.create({
     container: {
-        borderTopColor: ESTILOS_COMUNS.cores.azulPrimario,
+        borderTopColor: "#454545",
         borderTopWidth: 5,
         flex: 1,
         justifyContent: 'flex-end',
@@ -73,14 +79,14 @@ const estilos = StyleSheet.create({
     iconGroups: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        borderTopColor: ESTILOS_COMUNS.cores.azulPrimario,
+        borderTopColor: "#454545",
         borderTopWidth: 5,
         paddingTop: 8,
     },
     titleFont: {
         fontSize: 20,
         textAlign: 'center',
-        color:'#fff',
+        color: '#fff',
         fontFamily: ESTILOS_COMUNS.fontPrincipal.medium,
     },
     contentText: {
@@ -103,8 +109,8 @@ const estilos = StyleSheet.create({
         width: '80%',
         alignSelf: 'center',
     },
-    contentInfo:{
-        backgroundColor:ESTILOS_COMUNS.cores.azulSecundario
+    contentInfo: {
+        backgroundColor: ESTILOS_COMUNS.cores.azulSecundario
     }
 })
 
