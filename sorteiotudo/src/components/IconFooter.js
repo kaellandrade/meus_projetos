@@ -1,11 +1,15 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { ESTILOS_COMUNS } from '../styles/estilosComuns';
+import {ESTILOS_COMUNS} from '../styles/estilosComuns';
 const IconFooter = props => {
     return (
         <TouchableWithoutFeedback onPress={_ => console.log('Ação!')}>
-            <View style={[style.circle, props.colorBackground ? { backgroundColor: props.colorBackground } : null]}>
+            <View style={[
+                style.circle,
+                props.colorBackground ? { backgroundColor: props.colorBackground } : null,
+                props.isDark?{borderColor: ESTILOS_COMUNS.cores.secundaria}:{borderColor:'black'}
+            ]}>
                 <Icon color={props.color} name={props.name} size={props.size} />
             </View >
         </TouchableWithoutFeedback>
