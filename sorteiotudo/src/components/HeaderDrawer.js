@@ -19,7 +19,7 @@ const HeaderDrawer = props => {
         >
             <View style={estilos.logo}>
                 <Text
-                    style={[estilos.textLogo, isDark ? { color: 'white' } : { color: 'black' }]
+                    style={[estilos.textLogo, isDark ? { color: 'white' } : { color: ESTILOS_COMUNS.cores.azulSecundario }]
                     }>
                     SorteioTudo
                 </Text>
@@ -69,10 +69,11 @@ const estilos = StyleSheet.create({
     },
     textLogo: {
         fontSize: 40,
-        fontFamily: ESTILOS_COMUNS.fontPrincipal.light,
-        color: ESTILOS_COMUNS.cores.azulPrimario
-
-
+        fontFamily: ESTILOS_COMUNS.fontPrincipal.medium,
+        color: ESTILOS_COMUNS.cores.azulPrimario,
+        textShadowColor: ESTILOS_COMUNS.cores.azulPrimario,
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 0.01,
     },
 
 })
