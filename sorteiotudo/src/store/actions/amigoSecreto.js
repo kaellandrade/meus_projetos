@@ -86,6 +86,21 @@ const deleteStorageFriend = (key) => {
         }
     }
 }
+
+/**
+ * Deleta todos os amigos cadastrados.
+ */
+const deleteStorageAllFriends = _ =>{
+    return async function(dispach){
+        await AsyncStorage.setItem("@amigos_cadastrados", "[]");
+        try{
+            return dispach(getfrindStorage());
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
+
 /**
  * Recebe os novos valroes de um amigo e atualiza-o.
  */
@@ -122,5 +137,6 @@ export {
     addStorageFriend,
     deleteStorageFriend,
     updateStorageFriend,
-    pesquisar
+    pesquisar,
+    deleteStorageAllFriends
 }
