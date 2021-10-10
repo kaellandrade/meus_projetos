@@ -17,20 +17,31 @@ import { openModal } from '../store/actions/modal';
 import TutorialAdd from '../components/TutorialAdd';
 
 import { deleteStorageFriend, addFriend, getfrindStorage } from '../store/actions/amigoSecreto';
+
+/**
+ * Recebe um nome de amigo e retorna sua inicial caso seja um
+ * nome válido, caso contário retorna '?'
+ * Ex: 'Micael' -> M
+ * Ex2: '...' -> ?
+ */
+const getFirstLetterAvatar = (name) => {
+    const iniciaisRegx = /\b\w/gi;
+    const [nome] = iniciaisRegx.test(name) ? name.match(iniciaisRegx) : '?'
+    return nome;
+
+}
 /**
  * Função responsável por renderizar os amigos.
         borderColor: ESTILOS_COMUNS.cores.azulSecundario,
  * 
  */
 const renderFriend = ({ item }, props) => {
-    const iniciaisRegx = /\b\w/gi;
-    const [nome] = item.name.match(iniciaisRegx);
     const isDark = props.darkMode
     return (
         <View style={[estilos.boxFrind, isDark ?
             { borderColor: '#ababab', backgroundColor: '#0000' } : { borderColor: ESTILOS_COMUNS.cores.principal }]}>
             <Box style={[estilos.avatar, { backgroundColor: randomColor() }, isDark ? { borderColor: '#fffa' } : { borderBottomColor: 'black' }]}>
-                <Text style={{ fontSize: 25 }}>{nome}</Text>
+                <Text style={{ fontSize: 25 }}>{getFirstLetterAvatar(item.name)}</Text>
             </Box>
 
             <View style={{ flex: 1 }}>
@@ -71,7 +82,7 @@ const AmigoSecreto = (props) => {
                 [
                     estilos.container,
                     isDark ? { backgroundColor: '#171717' } : { backgroundColor: ESTILOS_COMUNS.cores.secundaria }
-                    
+
                 ]
             }>
                 <ModalFrind />
@@ -98,7 +109,7 @@ const AmigoSecreto = (props) => {
                             }
                         }
                     >
-                        <View style={[estilos.butonAdd, isDark?{borderColor:'#ffff'}:{borderColor:'#444444'}]}>
+                        <View style={[estilos.butonAdd, isDark ? { borderColor: '#ffff' } : { borderColor: '#444444' }]}>
                             <Icon
                                 color={ESTILOS_COMUNS.cores.secundaria} name='plus'
                                 size={ESTILOS_COMUNS.iconesTamanhos.extraGrande}
