@@ -17,7 +17,6 @@ const initialState = {
 reducer = (state = initialState, action) => {
     const { payload, type } = action;
     if (type === SET_FRINDS) {
-
         return {
             ...state,
             amigosCadastrados: payload ? payload : []
