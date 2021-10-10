@@ -75,6 +75,7 @@ const estilos = StyleSheet.create({
         borderTopWidth: 5,
         flex: 1,
         justifyContent: 'flex-end',
+        
     },
     iconGroups: {
         flexDirection: 'row',
@@ -108,9 +109,12 @@ const estilos = StyleSheet.create({
         borderBottomWidth: 0.5,
         width: '80%',
         alignSelf: 'center',
+
     },
     contentInfo: {
-        backgroundColor: ESTILOS_COMUNS.cores.azulSecundario
+        backgroundColor: ESTILOS_COMUNS.cores.azulSecundario,
+        opacity:0.8,
+        
     }
 })
 
