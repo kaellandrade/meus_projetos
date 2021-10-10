@@ -73,7 +73,7 @@ const estilos = StyleSheet.create({
         color: ESTILOS_COMUNS.cores.azulPrimario,
         textShadowColor: ESTILOS_COMUNS.cores.azulPrimario,
         textShadowOffset: { width: -1, height: 1 },
-        textShadowRadius: 0.01,
+        textShadowRadius: 0.01
     },
 
 })
