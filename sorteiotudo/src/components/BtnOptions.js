@@ -9,7 +9,11 @@ import {
 
 } from 'native-base';
 import { connect } from 'react-redux'
-import { deleteAllFriends, sortear, toggle_sortear } from '../store/actions/amigoSecreto';
+import {
+    deleteStorageAllFriends,
+    sortear,
+    toggle_sortear
+} from '../store/actions/amigoSecreto';
 import MyIconButton from './IconButton';
 import Dialog from './Dialog';
 import If from './If';
@@ -74,8 +78,8 @@ const BtnOptions = props => {
                         <MyIconButton
                             opacity={0.9}
                             Onpress={_ => { console.warn('Disparar E-mails') }}
-                            name='send' 
-                            style={{...estilos.btnEmail, ...isDark?{ borderColor: '#ffff' }:{borderColor:'#444444'}}}
+                            name='send'
+                            style={{ ...estilos.btnEmail, ...isDark ? { borderColor: '#ffff' } : { borderColor: '#444444' } }}
                             color='white'
                             size={ESTILOS_COMUNS.iconesTamanhos.grande} />
                     </If>
@@ -192,7 +196,7 @@ const mapDispatchToProps = dispach => {
         deleteFriend: id => dispach(deleteFriend(id)),
         addFriend: frind => dispach(addFriend(frind)),
         sortear: mode => dispach(sortear(mode)),
-        deleteAllFriends: _ => dispach(deleteAllFriends()),
+        deleteAllFriends: _ => dispach(deleteStorageAllFriends()),
         toggle_sortear: _ => dispach(toggle_sortear(_))
     }
 }
