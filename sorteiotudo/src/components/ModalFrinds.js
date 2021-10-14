@@ -86,7 +86,7 @@ const ModalFrind = props => {
                         </Text>
                     </If>
                     <Input
-                        style={darkMode ? {color:'white'} : estilos.whiteModeFont}
+                        style={darkMode ? { color: 'white' } : estilos.whiteModeFont}
                         mt={4}
                         placeholder="Nome do amigo..."
                         value={name}
@@ -100,7 +100,7 @@ const ModalFrind = props => {
 
                     />
                     <Input
-                        style={darkMode ? {color:'white'} : estilos.whiteModeFont}
+                        style={darkMode ? { color: 'white' } : estilos.whiteModeFont}
                         ref={inputEmail}
                         mt={4}
                         placeholder="E-mail do amigo"
@@ -125,7 +125,7 @@ const ModalFrind = props => {
                         </Button>
                         <Button
                             onPress={updateOrAdd}
-                            isDisabled={name.length === VAZIO || email.length === VAZIO}
+                            isDisabled={name.trim().length === VAZIO || email.trim().length === VAZIO}
                         >
                             {props.name ? 'Atualizar' : 'Cadastrar'}
                         </Button>
