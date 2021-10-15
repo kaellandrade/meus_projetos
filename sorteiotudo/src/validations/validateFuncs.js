@@ -14,7 +14,7 @@ const validateEmail = (email) => {
  * @returns Boolea
  * TODO: Implementar essa função
  */
-const validateEmail = (name) => {
+const validateName = (name) => {
     return null
 }
 
