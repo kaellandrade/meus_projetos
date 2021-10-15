@@ -60,7 +60,7 @@ const addStorageFriend = ({ name, email }) => {
     return async function (dispach) {
         const amigos = await AsyncStorage.getItem("@amigos_cadastrados") || '[]'
         const amigosArray = JSON.parse(amigos)
-        amigosArray.push({ name, email, id: Math.random() })
+        amigosArray.push({ name:name.trim(), email, id: Math.random() })
         await AsyncStorage.setItem("@amigos_cadastrados", JSON.stringify(amigosArray))
         try {
             return dispach(getfrindStorage())
@@ -102,7 +102,7 @@ const deleteStorageAllFriends = _ =>{
 }
 
 /**
- * Recebe os novos valroes de um amigo e atualiza-o.
+ * Recebe os novos valores de um amigo e atualiza-o.
  */
 const updateStorageFriend = ({ name, email, id }) => {
     return async function (dispach) {
@@ -112,7 +112,7 @@ const updateStorageFriend = ({ name, email, id }) => {
 
         amigosArray = amigosArray.map((friend) => {
             if (friend.id === id) {
-                return { ...friend, name: name, email: email }
+                return { ...friend, name: name.trim(), email: email }
             }
             else {
                 return friend
